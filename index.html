@@ -15,7 +15,7 @@
         
         body {
             background: #000;
-            color: #00ff00;
+            color: #ff1d1d;
             font-family: 'Space Mono', monospace;
             line-height: 1.6;
             overflow-x: hidden;
@@ -67,11 +67,37 @@
             text-transform: uppercase;
             letter-spacing: 0.2em;
             margin-bottom: 20px;
+            position: relative;
+            background: linear-gradient(45deg, #ff1d1d, #cc0000, #ff1d1d, #cc0000);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-shadow: 
-                0 0 10px #00ff00,
-                0 0 20px #00ff00,
-                0 0 30px #00ff00;
-            animation: pulse 2s infinite;
+                3px 3px 0px #000,
+                6px 6px 0px #ff1d1d,
+                9px 9px 0px #cc0000,
+                12px 12px 0px #990000,
+                0 0 20px #ff1d1d,
+                0 0 40px #ff1d1d;
+            animation: 
+                pulse 2s infinite,
+                gradientShift 3s ease-in-out infinite,
+                float3D 4s ease-in-out infinite;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes float3D {
+            0%, 100% { transform: rotateX(0deg) rotateY(0deg) translateZ(0px); }
+            25% { transform: rotateX(2deg) rotateY(2deg) translateZ(10px); }
+            50% { transform: rotateX(0deg) rotateY(0deg) translateZ(20px); }
+            75% { transform: rotateX(-2deg) rotateY(-2deg) translateZ(10px); }
         }
         
         @keyframes pulse {
@@ -81,7 +107,7 @@
         
         .tagline {
             font-size: 1.2rem;
-            color: #00cc00;
+            color: #cc0000;
             margin-bottom: 40px;
             font-style: italic;
         }
@@ -95,25 +121,25 @@
         }
         
         .nav a {
-            color: #00ff00;
+            color: #ff1d1d;
             text-decoration: none;
             padding: 10px 20px;
-            border: 2px solid #00ff00;
+            border: 2px solid #ff1d1d;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
         
         .nav a:hover {
-            background: #00ff00;
+            background: #ff1d1d;
             color: #000;
-            box-shadow: 0 0 20px #00ff00;
+            box-shadow: 0 0 20px #ff1d1d;
         }
         
         section {
             margin-bottom: 80px;
             padding: 40px;
-            border: 1px solid #00ff00;
+            border: 1px solid #ff1d1d;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
         }
@@ -125,7 +151,7 @@
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: #00ff00;
+            color: #ff1d1d;
         }
         
         .track-listing {
@@ -136,9 +162,9 @@
         }
         
         .side {
-            border: 1px solid #00ff00;
+            border: 1px solid #ff1d1d;
             padding: 20px;
-            background: rgba(0, 255, 0, 0.05);
+            background: rgba(255, 29, 29, 0.05);
         }
         
         .side h3 {
@@ -146,12 +172,12 @@
             font-size: 1.5rem;
             margin-bottom: 20px;
             text-align: center;
-            color: #00ff00;
+            color: #ff1d1d;
         }
         
         .track {
             padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 29, 29, 0.3);
             font-size: 1.1rem;
         }
         
@@ -167,9 +193,9 @@
         }
         
         .rig {
-            border: 1px solid #00ff00;
+            border: 1px solid #ff1d1d;
             padding: 20px;
-            background: rgba(0, 255, 0, 0.05);
+            background: rgba(255, 29, 29, 0.05);
         }
         
         .rig h3 {
@@ -177,18 +203,18 @@
             font-size: 1.5rem;
             margin-bottom: 20px;
             text-align: center;
-            color: #00ff00;
+            color: #ff1d1d;
         }
         
         .gear-item {
             margin-bottom: 15px;
             padding: 10px;
             background: rgba(0, 0, 0, 0.5);
-            border-left: 3px solid #00ff00;
+            border-left: 3px solid #ff1d1d;
         }
         
         .gear-item strong {
-            color: #00cc00;
+            color: #cc0000;
         }
         
         .philosophy {
@@ -212,13 +238,13 @@
         
         .inspiration-item {
             padding: 15px;
-            border: 1px solid #00ff00;
-            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid #ff1d1d;
+            background: rgba(255, 29, 29, 0.05);
             text-align: center;
         }
         
         .inspiration-item h4 {
-            color: #00cc00;
+            color: #cc0000;
             margin-bottom: 10px;
         }
         
@@ -268,8 +294,8 @@
         .contact {
             text-align: center;
             padding: 40px;
-            border: 2px solid #00ff00;
-            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #ff1d1d;
+            background: rgba(255, 29, 29, 0.1);
         }
         
         .contact h2 {
@@ -284,15 +310,15 @@
         }
         
         .social-links a {
-            color: #00ff00;
+            color: #ff1d1d;
             text-decoration: none;
             padding: 10px 20px;
-            border: 1px solid #00ff00;
+            border: 1px solid #ff1d1d;
             transition: all 0.3s ease;
         }
         
         .social-links a:hover {
-            background: #00ff00;
+            background: #ff1d1d;
             color: #000;
         }
         
@@ -306,6 +332,35 @@
             20% { transform: translate(-2px, -2px); }
             30% { transform: translate(2px, 2px); }
             40% { transform: translate(2px, -2px); }
+        }
+        
+        /* 80s Chrome Effect */
+        .band-name::before {
+            content: 'JASON IN CHAINS';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                #ffffff 0%, 
+                #f0f0f0 25%, 
+                #ffffff 50%, 
+                #f0f0f0 75%, 
+                #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.3;
+            filter: blur(1px);
+            animation: chromeShift 4s ease-in-out infinite;
+        }
+        
+        @keyframes chromeShift {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            25% { transform: translateX(2px) translateY(-1px); }
+            50% { transform: translateX(0px) translateY(0px); }
+            75% { transform: translateX(-2px) translateY(1px); }
         }
         
         @media (max-width: 768px) {
@@ -361,7 +416,7 @@
             </div>
             
             <div style="margin-top: 40px; text-align: center;">
-                <h3 style="color: #00cc00; margin-bottom: 20px;">FULL CATALOG</h3>
+                <h3 style="color: #cc0000; margin-bottom: 20px;">FULL CATALOG</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 800px; margin: 0 auto;">
                     <div class="track">Jason in Chains</div>
                     <div class="track">Trimana</div>
@@ -481,9 +536,9 @@
                 glitchElements.forEach(element => {
                     if (Math.random() > 0.95) {
                         element.style.textShadow = `
-                            ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px #00ff00,
-                            ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px #00ff00,
-                            ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px #00ff00
+                            ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px #ff1d1d,
+                            ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px #ff1d1d,
+                            ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px #ff1d1d
                         `;
                     }
                 });
