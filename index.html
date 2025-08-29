@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JASON IN CHAINS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #00ff00;
+            font-family: 'Space Mono', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .glitch-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, #000 25%, transparent 25%),
+                linear-gradient(-45deg, #000 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #000 75%),
+                linear-gradient(-45deg, transparent 75%, #000 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            opacity: 0.1;
+            z-index: -1;
+            animation: glitch 20s infinite linear;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .band-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 10px #00ff00,
+                0 0 20px #00ff00,
+                0 0 30px #00ff00;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #00cc00;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .nav a {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #00ff00;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .nav a:hover {
+            background: #00ff00;
+            color: #000;
+            box-shadow: 0 0 20px #00ff00;
+        }
+        
+        section {
+            margin-bottom: 80px;
+            padding: 40px;
+            border: 1px solid #00ff00;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #00ff00;
+        }
+        
+        .track-listing {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .side {
+            border: 1px solid #00ff00;
+            padding: 20px;
+            background: rgba(0, 255, 0, 0.05);
+        }
+        
+        .side h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #00ff00;
+        }
+        
+        .track {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+            font-size: 1.1rem;
+        }
+        
+        .track:last-child {
+            border-bottom: none;
+        }
+        
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .rig {
+            border: 1px solid #00ff00;
+            padding: 20px;
+            background: rgba(0, 255, 0, 0.05);
+        }
+        
+        .rig h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #00ff00;
+        }
+        
+        .gear-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 3px solid #00ff00;
+        }
+        
+        .gear-item strong {
+            color: #00cc00;
+        }
+        
+        .philosophy {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .philosophy p {
+            margin-bottom: 20px;
+        }
+        
+        .inspiration {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .inspiration-item {
+            padding: 15px;
+            border: 1px solid #00ff00;
+            background: rgba(0, 255, 0, 0.05);
+            text-align: center;
+        }
+        
+        .inspiration-item h4 {
+            color: #00cc00;
+            margin-bottom: 10px;
+        }
+        
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .merch-item {
+            border: 1px solid #00ff00;
+            padding: 25px;
+            background: rgba(0, 255, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .merch-item:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+        }
+        
+        .merch-item h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #00ff00;
+        }
+        
+        .merch-item p {
+            margin-bottom: 20px;
+            color: #00cc00;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 10px;
+            display: inline-block;
+            min-width: 80px;
+        }
+        
+        .contact {
+            text-align: center;
+            padding: 40px;
+            border: 2px solid #00ff00;
+            background: rgba(0, 255, 0, 0.1);
+        }
+        
+        .contact h2 {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #00ff00;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #00ff00;
+            color: #000;
+        }
+        
+        .glitch-text {
+            animation: textGlitch 3s infinite;
+        }
+        
+        @keyframes textGlitch {
+            0%, 90%, 100% { transform: translate(0); }
+            10% { transform: translate(-2px, 2px); }
+            20% { transform: translate(-2px, -2px); }
+            30% { transform: translate(2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+        }
+        
+        @media (max-width: 768px) {
+            .band-name {
+                font-size: 2.5rem;
+            }
+            
+            .track-listing {
+                grid-template-columns: 1fr;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glitch-bg"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="band-name glitch-text">JASON IN CHAINS</h1>
+            <nav class="nav">
+                <a href="#music">Music</a>
+                <a href="#media">Media</a>
+                <a href="#contact">Contact</a>
+                <a href="#merch">Merch</a>
+            </nav>
+        </header>
+        
+        <section id="music">
+            <h2>TRACK LISTING</h2>
+            <div class="track-listing">
+                <div class="side">
+                    <h3>SIDE A</h3>
+                    <div class="track">INTRO</div>
+                    <div class="track">BEGINNING</div>
+                    <div class="track">JASON IN CHAINS</div>
+                    <div class="track">END</div>
+                </div>
+                <div class="side">
+                    <h3>SIDE B</h3>
+                    <div class="track">EUNUCHS</div>
+                    <div class="track">JOOLS</div>
+                    <div class="track">JULIA</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <h3 style="color: #00cc00; margin-bottom: 20px;">FULL CATALOG</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 800px; margin: 0 auto;">
+                    <div class="track">Jason in Chains</div>
+                    <div class="track">Trimana</div>
+                    <div class="track">Cosi</div>
+                    <div class="track">Imitrex</div>
+                    <div class="track">Bloodknot</div>
+                    <div class="track">Tabbytha</div>
+                    <div class="track">The Mirror</div>
+                    <div class="track">Ponderosa Lake House</div>
+                    <div class="track">Lee's</div>
+                    <div class="track">Busty Cops</div>
+                    <div class="track">Mouth of the World Tree</div>
+                    <div class="track">Discovery Toys</div>
+                    <div class="track">Battle of Waterloo</div>
+                    <div class="track">We Three Kings of Orient Are</div>
+                </div>
+            </div>
+        </section>
+<!--         
+        <section id="media">
+            <h2>MEDIA & GEAR</h2>
+            <div class="gear-grid">
+                <div class="rig">
+                    <h3>JD RIG 1</h3>
+                    <div class="gear-item">
+                        <strong>Guitar:</strong> Synsonic guitar
+                    </div>
+                    <div class="gear-item">
+                        <strong>Effects:</strong> Metal slide, Ibanez fuzz, Vox wah, Boss DS-1, Volume pedal
+                    </div>
+                    <div class="gear-item">
+                        <strong>Amp:</strong> Marshall amp
+                    </div>
+                </div>
+                
+                <div class="rig">
+                    <h3>EVAN RIG 1</h3>
+                    <div class="gear-item">
+                        <strong>Guitar:</strong> Ibanez guitar
+                    </div>
+                    <div class="gear-item">
+                        <strong>Effects:</strong> Metal slide, Boss DD-6
+                    </div>
+                    <div class="gear-item">
+                        <strong>Amp:</strong> Fender Frontman 15G amp
+                    </div>
+                </div>
+            </div> -->
+<!--             
+            <div style="margin-top: 40px; text-align: center;">
+                <h3 style="color: #00cc00; margin-bottom: 20px;">EXPERIMENTAL TECHNIQUES</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto;">
+                    <div class="inspiration-item">
+                        <h4>Live Warping</h4>
+                        <p>One guitarist plays while the other warps and layers with effects</p>
+                    </div>
+                    <div class="inspiration-item">
+                        <h4>Contact Mics</h4>
+                        <p>Experimental sound capture and manipulation</p>
+                    </div>
+                    <div class="inspiration-item">
+                        <h4>Backing Tracks</h4>
+                        <p>Jungle beats, drum n bass, and ambient textures</p>
+                    </div>
+                    <div class="inspiration-item">
+                        <h4>Pitch Shifting</h4>
+                        <p>Extreme pitch manipulation and time stretching</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        
+        <section id="merch">
+            <h2>MERCH</h2>
+            <div class="merch-grid">
+                <div class="merch-item">
+                    <h3>Cassette Tapes</h3>
+                    <p>Limited edition releases on cassette</p>
+                    <div class="price">$8</div>
+                </div>
+                <div class="merch-item">
+                    <h3>T-Shirts</h3>
+                    <p>Band logo and artwork designs</p>
+                    <div class="price">$20</div>
+                </div>
+                <div class="merch-item">
+                    <h3>Stickers</h3>
+                    <p>DIY aesthetic band stickers</p>
+                    <div class="price">$3</div>
+                </div>
+                <div class="merch-item">
+                    <h3>Digital Downloads</h3>
+                    <p>High quality audio files</p>
+                    <div class="price">$5</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact">
+            <h2>GET IN TOUCH</h2>
+            <p>For bookings, collaborations, or just to say hello</p>
+            <div class="social-links">
+                <a href="#" target="_blank">Bandcamp</a>
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">YouTube</a>
+                <a href="mailto:contact@jasoninchains.com">Email</a>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // Add some interactive glitch effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const glitchElements = document.querySelectorAll('.glitch-text');
+            
+            setInterval(() => {
+                glitchElements.forEach(element => {
+                    if (Math.random() > 0.95) {
+                        element.style.textShadow = `
+                            ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px #00ff00,
+                            ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px #00ff00,
+                            ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px #00ff00
+                        `;
+                    }
+                });
+            }, 100);
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
